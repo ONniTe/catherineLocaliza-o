@@ -1,0 +1,1384 @@
+
+//
+// FlowScript decompiled using Atlus Script Tools
+//
+
+
+//
+// Imports
+//
+
+import("pzl_13_07.bf.msg");
+
+//
+// Script-level variable definitions
+//
+
+int sVar0;
+int sVar1;
+int sVar2;
+int sVar3;
+int sVar4;
+
+//
+// Procedure declarations
+//
+
+// Procedure Index: 0
+void pzl_13_07_start()
+{
+return;
+}
+
+
+// Procedure Index: 1
+void pzl_13_07_end()
+{
+colo_goal1();
+return;
+}
+
+
+// Procedure Index: 2
+void pzl_00_00_dead()
+{
+colo_goal2();
+return;
+}
+
+
+// Procedure Index: 3
+void pzl_00_00_dead_2()
+{
+colo_goal3();
+return;
+}
+
+
+// Procedure Index: 4
+void pzl_00_00_dead_3()
+{
+colo_goal4();
+return;
+}
+
+
+// Procedure Index: 5
+void pzl_13_07_00()
+{
+pzl_normal_dead4();
+return;
+}
+
+
+// Procedure Index: 6
+void pzl_compe_init()
+{
+SET_COUNTER(6, 0);
+SET_COUNTER(7, 0);
+SET_COUNTER(8, 0);
+}
+
+
+// Procedure Index: 7
+void pzl_compe_02()
+{
+point_start();
+}
+
+
+// Procedure Index: 8
+void pzl_compe_03()
+{
+start_diff();
+}
+
+
+// Procedure Index: 9
+void pzl_compe_04()
+{
+int var5;
+var5 = RND(1000);
+
+if (var5 < 500)
+{
+Cmpr_previous();
+}
+else
+{
+point_halfway();
+}
+
+}
+
+
+// Procedure Index: 10
+void pzl_13_01_05()
+{
+point_goal();
+}
+
+
+// Procedure Index: 11
+void Init_REG()
+{
+sVar0 = 0;
+sVar1 = 0;
+sVar2 = 0;
+sVar3 = 0;
+sVar4 = 0;
+}
+
+
+// Procedure Index: 12
+void Get_PlayerState()
+{
+int var6;
+int var7;
+int var8;
+int var9;
+int var10;
+int var11;
+Init_REG();
+var6 = PZL_CHAR_GETY(0);
+var7 = PZL_CHAR_GETY(1);
+var8 = PZL_GET_WIN(0);
+var9 = PZL_GET_WIN(1);
+var10 = PZL_GET_ITEMID(0);
+var11 = PZL_GET_ITEMID(1);
+
+if (var6 > var7)
+{
+sVar0 = 1;
+sVar1 = (var6 - var7);
+}
+else if (var6 < var7)
+{
+sVar0 = 2;
+sVar1 = (var7 - var6);
+}
+else
+{
+sVar0 = 3;
+sVar1 = 0;
+}
+
+
+if ((var8 == 0) && (var9 == 0))
+{
+sVar2 = 0;
+}
+else if (var8 > var9)
+{
+sVar2 = 1;
+}
+else if (var8 < var9)
+{
+sVar2 = 2;
+}
+else
+{
+sVar2 = 3;
+}
+
+
+if ((var10 == 5) && (var11 == 5))
+{
+sVar3 = 3;
+}
+else if (var10 == 5)
+{
+sVar3 = 1;
+}
+else if (var11 == 5)
+{
+sVar3 = 2;
+}
+else
+{
+sVar3 = 0;
+}
+
+}
+
+
+// Procedure Index: 13
+void Set_DiffandFirst()
+{
+SET_COUNTER(6, sVar0);
+SET_COUNTER(7, sVar1);
+}
+
+
+// Procedure Index: 14
+void start_diff()
+{
+int var12;
+Get_PlayerState();
+var12 = RND(1000);
+
+if (sVar1 < 3)
+{
+sVar4 = 2;
+}
+else if (sVar0 == 1)
+{
+sVar4 = 4;
+}
+else if (sVar0 == 2)
+{
+sVar4 = 6;
+}
+else
+{
+return;
+}
+
+
+if (var12 < 500)
+{
+sVar4 = (sVar4 + 1);
+}
+
+Disp_msg();
+Set_DiffandFirst();
+}
+
+
+// Procedure Index: 15
+void Cmpr_previous()
+{
+Get_PlayerState();
+
+if (GET_COUNTER(7) < 3)
+{
+
+if (sVar1 < 3)
+{
+sVar4 = 8;
+}
+else if (sVar0 == 1)
+{
+sVar4 = 12;
+}
+else if (sVar0 == 2)
+{
+sVar4 = 14;
+}
+else
+{
+return;
+}
+
+}
+else if (GET_COUNTER(6) == 1)
+{
+
+if (sVar1 < 3)
+{
+sVar4 = 10;
+}
+else if (sVar0 == 2)
+{
+sVar4 = 0x10;
+}
+else if (sVar0 == 1)
+{
+
+if (sVar3 == 2)
+{
+sVar4 = 26;
+}
+else
+{
+sVar4 = 20;
+}
+
+}
+else
+{
+return;
+}
+
+}
+else if (GET_COUNTER(6) == 2)
+{
+
+if (sVar1 < 3)
+{
+sVar4 = 10;
+}
+else if (sVar0 == 1)
+{
+sVar4 = 18;
+}
+else if (sVar0 == 2)
+{
+
+if (sVar3 == 2)
+{
+sVar4 = 24;
+}
+else
+{
+sVar4 = 22;
+}
+
+}
+else
+{
+return;
+}
+
+}
+else
+{
+return;
+}
+
+
+if (sVar4 == GET_COUNTER(8))
+{
+sVar4 = (sVar4 + 1);
+}
+
+SET_COUNTER(8, sVar4);
+Disp_msg();
+Set_DiffandFirst();
+}
+
+
+// Procedure Index: 16
+void point_start()
+{
+Get_PlayerState();
+
+if (sVar2 == 0)
+{
+sVar4 = 28;
+}
+else if (sVar2 == 1)
+{
+sVar4 = 29;
+}
+else if (sVar2 == 2)
+{
+sVar4 = 30;
+}
+else if (sVar2 == 3)
+{
+sVar4 = 31;
+}
+else
+{
+return;
+}
+
+Disp_msg();
+}
+
+
+// Procedure Index: 17
+void point_halfway()
+{
+int var13;
+Get_PlayerState();
+var13 = RND(1000);
+sVar4 = 0x20;
+
+if (var13 < 100)
+{
+sVar4 = (sVar4 + 1);
+}
+else if (var13 < 200)
+{
+sVar4 = (sVar4 + 2);
+}
+else if (var13 < 300)
+{
+sVar4 = (sVar4 + 3);
+}
+else if (var13 < 400)
+{
+sVar4 = (sVar4 + 4);
+}
+else if (var13 < 500)
+{
+sVar4 = (sVar4 + 5);
+}
+else if (var13 < 600)
+{
+sVar4 = (sVar4 + 6);
+}
+else if (var13 < 700)
+{
+sVar4 = (sVar4 + 7);
+}
+else if (var13 < 800)
+{
+sVar4 = (sVar4 + 8);
+}
+else if (var13 < 900)
+{
+sVar4 = (sVar4 + 9);
+}
+
+Disp_msg();
+}
+
+
+// Procedure Index: 18
+void point_goal()
+{
+int var14;
+Get_PlayerState();
+var14 = RND(1000);
+sVar4 = 42;
+
+if (var14 < 500)
+{
+sVar4 = (sVar4 + 1);
+}
+
+Disp_msg();
+}
+
+
+// Procedure Index: 19
+void Disp_msg()
+{
+MSG_SYNC();
+MSG_EVT(sVar4);
+MSG_SYNC();
+}
+
+
+// Procedure Index: 20
+void check_msg()
+{
+int var15;
+var15 = 2;
+_60:
+
+if (var15 <= 45)
+{
+MSG_SYNC();
+MSG_EVT(var15);
+MSG_SYNC();
+var15 = (var15 + 1);
+goto _60;
+}
+
+}
+
+
+// Procedure Index: 21
+void check_error()
+{
+MSG_SYNC();
+MSG_EVT(44);
+MSG_SYNC();
+}
+
+
+// Procedure Index: 22
+void pzl_normal_dead()
+{
+float fVar0;
+float fVar1;
+float fVar2;
+int var16;
+int var17;
+int var18;
+int var19;
+FADE_OUT(1, 2);
+FADE_COLOR(0, 0, 0);
+FADE_SYNC();
+STOP_QUAKE();
+PZL_VOICE_STOP();
+PZL_CAMERA_LOCK();
+PZL_MODEL_DISP(2, 0);
+var16 = PZL_CHAR_GETX(0);
+var17 = PZL_CHAR_GETY(0);
+var18 = PZL_CHAR_GETZ(0);
+fVar0 = PZL_CHAR_GETX2(0);
+fVar1 = PZL_CHAR_GETY2(0);
+fVar2 = PZL_CHAR_GETZ2(0);
+var19 = PZL_CHAR_GETDIR(0);
+
+if (var19 == 1)
+{
+PZL_CAMERA_ROTATE(0.00f);
+}
+else if (var19 == 2)
+{
+PZL_CAMERA_ROTATE(90.00f);
+}
+else if (var19 == 3)
+{
+PZL_CAMERA_ROTATE(180.00f);
+}
+else
+{
+PZL_CAMERA_ROTATE(-90.00f);
+}
+
+PZL_BGM_STOP();
+PZL_ENV_STOP();
+PZL_CUBE_DISP(1);
+PZL_SHEEP_DISP(1);
+PZL_MODEL_DISP(2, 0);
+PZL_MODEL_ANIM_RESET(0);
+PZL_MODEL_GROUP_ANIM(0, 1, 143, 1.00f, 0.00f);
+PZL_MODEL_GROUP_ANIM(0, 3, 122, 1.00f, 0.00f);
+PZL_MODEL_GROUP_ANIM(0, 3, 121, 1.00f, 0.00f);
+WAIT(1);
+PZL_CAMERA_ANIM(101, 0, 1.00f, 0.00f);
+PZL_CAMERA_TRANSLATE(7, var17, (var18 - 2));
+PZL_CAMERA_ROTATE(180.00f);
+PZL_MODEL_TRANSLATE2(0, 1050.00f, (fVar1 + 60.00f), (fVar2 - 290.00f));
+PZL_MODEL_ROTATE(0, 180.00f);
+FADE_IN(0);
+PZL_MODEL_ANIM(0, 62, 1.00f, 0.00f);
+PZL_MODEL_GROUP_ANIM(0, 1, 143, 1.00f, 0.00f);
+PZL_MODEL_GROUP_ANIM(0, 3, 122, 1.00f, 0.00f);
+PZL_MODEL_GROUP_ANIM(0, 3, 121, 1.00f, 0.00f);
+PZL_VOICE(40100);
+PZL_BLUR_ANIM(0.00f, 0.00f, 10.00f, 0.00f);
+PZL_BLUR_ACTIVE(1);
+WAIT(45);
+FADE_OUT(1, 55);
+FADE_SYNC();
+WAIT(20);
+PZL_SE(231);
+DUALSHOCK(0, 0.20f, 1.00f, 1.00f);
+PZL_MODEL_READ(10, 99, 52, 1);
+PZL_MODEL_SYNC(10);
+PZL_MODEL_ROTATE(10, 180.00f);
+PZL_MODEL_TRANSLATE(10, 7, var17, var18);
+PZL_MODEL_DISP(10, 0);
+PZL_MODEL_DISP(0, 0);
+PZL_BG_DISP(0);
+WAIT(10);
+PZL_BGM(45);
+WAIT(25);
+FADE_IN(0);
+PZL_CAMERA_ANIM(103, 0, 1.00f, 0.00f);
+PZL_CAMERA_TRANSLATE(7, var17, (var18 - 20));
+PZL_AMBIENT_ANIM(0, 0.02f, -1.00f, -1.00f, -1.00f, 0.00f);
+PZL_MODEL_DISP(10, 1);
+PZL_MODEL_ROTATE(10, 180.00f);
+PZL_MODEL_TRANSLATE(10, 7, var17, (var18 - 20));
+PZL_MODEL_ANIM(10, 0, 1.00f, 0.00f);
+WAIT(1);
+PZL_BLUR_ACTIVE(0);
+PZL_BLUR_ANIM(0.00f, 0.00f, 0.80f, 0.00f);
+PZL_DOF_ANIM(0.95f, 0.03f, 0.00f);
+WAIT(20);
+PZL_GAMEOVER(4.00f, 1.40f);
+WAIT(50);
+PZL_VOICE(41001);
+PZL_GAMEOVER_SYNC();
+PZL_BLUR_ACTIVE(0);
+PZL_MODEL_DISP(10, 0);
+WAIT(1);
+PZL_MODEL_FREE(10);
+PZL_CAMERA_UNLOCK();
+PZL_CAMERA_DETACH(103);
+PZL_MODEL_DISP(2, 1);
+PZL_DOF_ANIM(1.00f, 0.00f, 0.00f);
+PZL_BLUR_ACTIVE(0);
+return;
+}
+
+
+// Procedure Index: 23
+void pzl_boss_dead()
+{
+int var20;
+int var21;
+int var22;
+var20 = PZL_CHAR_GETX(0);
+var21 = PZL_CHAR_GETY(0);
+var22 = PZL_CHAR_GETZ(0);
+PZL_CAMERA_LOCK();
+PZL_BGM_STOP();
+PZL_ENV_STOP();
+PZL_VOICE_STOP();
+PZL_CAMERA_TRANSLATE(var20, var21, var22);
+PZL_CAMERA_ANIM(100, 0, 1.00f, 0.00f);
+WAIT(1);
+PZL_MODEL_TRANSLATE(2, var20, (var21 - 20), var22);
+PZL_MODEL_TRANSLATE(0, var20, var21, var22);
+PZL_HDR_ANIM2(0.20f, -1.00f, -1.00f, -1.00f, 0.00f, 1.50f, 0.00f);
+PZL_FOG_ANIM(-1.00f, 2000.00f, 0.00f);
+PZL_BLUR_ANIM(0, 0, 10.00f, 0.00f);
+PZL_MODEL_ANIM_RESET(0);
+PZL_MODEL_ROTATE(0, 0.00f);
+PZL_MODEL_ANIM(0, 61, 1.00f, 0.00f);
+PZL_MODEL_GROUP_ANIM(0, 3, 122, 1.00f, 0.00f);
+PZL_MODEL_GROUP_ANIM(0, 3, 120, 1.00f, 0.00f);
+DUALSHOCK(0, 0.80f, 1.00f, 1.00f);
+WAIT(5);
+PZL_VOICE(40102);
+WAIT(13);
+FADE_OUT(1, 0);
+FADE_COLOR(0, 0, 0);
+PZL_MODEL_READ(10, 99, 47, 1);
+PZL_MODEL_SYNC(10);
+PZL_MODEL_ROTATE(10, 180.00f);
+PZL_MODEL_TRANSLATE(10, var20, var21, var22);
+PZL_SE(1508);
+WAIT(2);
+PZL_SE(228);
+PZL_CAMERA_ANIM(102, 0, 1.00f, 0.00f);
+WAIT(1);
+FADE_IN(0);
+PZL_HDR_ANIM2(2.00f, -1.00f, -1.00f, -1.00f, 0.00f, 1.20f, 0.00f);
+PZL_FOG_ANIM(-1.00f, 10000.00f, 0.00f);
+PZL_MODEL_DISP(0, 0);
+PZL_MODEL_TRANSLATE(2, var20, var21, (var22 - 1));
+PZL_MODEL_GROUP_NEXT_ANIM(2, 0, 0, 1.00f, 2.00f);
+PZL_BLUR_ANIM(0.00f, 0.00f, 0.00f, 0.30f);
+PZL_MODEL_TRANSLATE(10, var20, (var21 + 1), var22);
+PZL_MODEL_ANIM(10, 0, 1.00f, 0.00f);
+WAIT(30);
+PZL_BGM(45);
+WAIT(50);
+PZL_GAMEOVER(0.00f, 0.20f);
+PZL_GAMEOVER_SYNC();
+WAIT(50);
+PZL_MODEL_DISP(2, 0);
+PZL_BG_DISP(0);
+PZL_MODEL_FREE(10);
+PZL_VOICE(41001);
+PZL_CAMERA_UNLOCK();
+PZL_CAMERA_DETACH(102);
+PZL_MODEL_DISP(2, 1);
+return;
+}
+
+
+// Procedure Index: 24
+void pzl_normal_dead2()
+{
+PZL_BGM_STOP();
+PZL_ENV_STOP();
+PZL_VOICE_STOP();
+PZL_BGM(45);
+PZL_GAMEOVER(0.50f, 0.10f);
+WAIT(4);
+PZL_FADE_OUT(0.08f, 1.00f);
+PZL_VOICE(40100);
+WAIT(50);
+PZL_MODEL_DISP(2, 0);
+PZL_BG_DISP(0);
+WAIT(10);
+PZL_GAMEOVER_SYNC();
+return;
+}
+
+
+// Procedure Index: 25
+void pzl_normal_dead3()
+{
+PZL_BGM_STOP();
+PZL_ENV_STOP();
+PZL_BGM(55);
+PZL_GAMEOVER(0.50f, 0.10f);
+WAIT(4);
+PZL_FADE_OUT(0.08f, 1.00f);
+return;
+}
+
+
+// Procedure Index: 26
+void pzl_normal_dead4()
+{
+float fVar3;
+float fVar4;
+float fVar5;
+int var26;
+int var27;
+int var28;
+PZL_BGM_STOP();
+PZL_ENV_STOP();
+var26 = PZL_CHAR_GETX(0);
+var27 = PZL_CHAR_GETY(0);
+var28 = PZL_CHAR_GETZ(0);
+fVar3 = PZL_CHAR_GETX2(0);
+fVar4 = PZL_CHAR_GETY2(0);
+fVar5 = PZL_CHAR_GETZ2(0);
+PZL_BGM(45);
+PZL_LETTERBOX_DISP(0);
+PZL_CAMERA_LOCK();
+PZL_CAMERA_ANIM(101, 0, 1.00f, 0.00f);
+PZL_CAMERA_TRANSLATE(7, var27, (var28 - 8));
+PZL_CAMERA_ROTATE(180.00f);
+PZL_MODEL_TRANSLATE2(0, 900.00f, (fVar4 + 80.00f), (fVar5 - 1200.00f));
+PZL_MODEL_ROTATE(0, 180.00f);
+PZL_MODEL_ANIM_RESET(0);
+PZL_MODEL_ANIM(0, 62, 1.00f, 0.00f);
+PZL_VOICE(40115);
+PZL_BLUR_ANIM(0.00f, 0.00f, 10.00f, 0.00f);
+PZL_MODEL_TRANSLATE2(1, 1200.00f, (fVar4 + 70.00f), (fVar5 - 1200.00f));
+PZL_MODEL_ROTATE(1, 180.00f);
+PZL_MODEL_ANIM_RESET(1);
+PZL_MODEL_ANIM(1, 62, 1.00f, 0.00f);
+PZL_VOICE(40116);
+WAIT(50);
+PZL_BLUR_ACTIVE(0);
+PZL_CAMERA_ROTATE(180.00f);
+PZL_CAMERA_TRANSLATE(5, (var27 + 5), (var28 - 2));
+PZL_CAMERA_ANIM(108, 0, 1.00f, 0.00f);
+WAIT(4);
+return;
+}
+
+
+// Procedure Index: 27
+void pzl_goal_block1()
+{
+int var29;
+int var30;
+int var31;
+PZL_MODEL_DISP(2, 0);
+PZL_VOICE_STOP();
+STOP_QUAKE();
+var29 = PZL_CHAR_GETX(0);
+var30 = PZL_CHAR_GETY(0);
+var31 = PZL_CHAR_GETZ(0);
+PZL_LETTERBOX_DISP(0);
+PZL_CAMERA_LOCK();
+PZL_CAMERA_ROTATE(180.00f);
+PZL_CAMERA_TRANSLATE(var29, var30, var31);
+PZL_VOICE(40001);
+PZL_CAMERA_ANIM(108, 0, 1.00f, 0.00f);
+PZL_CUBE_DISP2(1);
+PZL_SHEEP_DISP(1);
+PZL_MODEL_TRANSLATE(0, var29, var30, var31);
+PZL_MODEL_ROTATE(0, 0.00f);
+PZL_BLUR_ANIM(0.00f, 0.00f, 4.00f, 0.00f);
+PZL_SE(450);
+
+if (RND(1) == 0)
+{
+PZL_CAMERA_READ(1, 608);
+}
+else
+{
+PZL_CAMERA_READ(1, 612);
+}
+
+PZL_CAMERA_SYNC(1);
+PZL_BLUR_ANIM(0.00f, 0.00f, 0.00f, 0.50f);
+PZL_MODEL_ANIM(0, 167, 1.00f, 0.00f);
+PZL_MODEL_GROUP_NEXT_ANIM(0, 0, 168, 1.00f, 0.00f);
+WAIT(3);
+PZL_GRAB_DISP(0, 1);
+WAIT(3);
+PADOK(0);
+PZL_GRAB_DISP(0, 0);
+PZL_VOICE(20014);
+PZL_CAMERA_ANIM(1, 0, 1.00f, 0.00f);
+PZL_MODEL_ANIM(0, 84, 1.00f, 0.20f);
+WAIT(6);
+PZL_MODEL_ANIM(3, 2, 1.00f, 0.00f);
+PZL_MODEL_GROUP_NEXT_ANIM(3, 0, 3, 1.00f, 0.00f);
+DUALSHOCK(0, 0.20f, 1.00f, 1.00f);
+WAIT(14);
+PZL_SE(229);
+WAIT(15);
+PZL_AGOAL_BLOCK();
+WAIT(20);
+PZL_MODEL_GROUP_ANIM(0, 1, 158, 1.00f, 0.00f);
+WAIT(15);
+PZL_MODEL_GROUP_ANIM(0, 1, 107, 1.00f, 0.10f);
+PZL_MODEL_GROUP_ANIM(0, 3, 121, 1.00f, 0.00f);
+WAIT(29);
+PZL_AGOAL_CLIMB();
+WAIT(8);
+PZL_SE(458);
+WAIT(5);
+PZL_RESULT();
+WAIT(7);
+PZL_AMBIENT_ANIM(1, 0.20f, -1.00f, -1.00f, -1.00f, 0.40f);
+PZL_FILTER_ANIM(0, 4.00f);
+WAIT(23);
+PZL_SE(459);
+WAIT(20);
+PZL_BG_FADEOUT(5);
+PZL_FADE_OUT(5, 1.00f);
+WAIT(45);
+PZL_SE(466);
+WAIT(43);
+PZL_SE(458);
+PZL_RESULT_SYNC();
+PZL_AGOAL_SYNC();
+FADE_OUT(1, 3);
+FADE_COLOR(0, 0, 0);
+FADE_SYNC();
+PZL_CAMERA_UNLOCK();
+PZL_CAMERA_FREE(0);
+PZL_CAMERA_FREE(1);
+return;
+}
+
+
+// Procedure Index: 28
+void pzl_goal_block2()
+{
+int var32;
+int var33;
+int var34;
+PZL_MODEL_DISP(2, 0);
+PZL_VOICE_STOP();
+STOP_QUAKE();
+var32 = PZL_CHAR_GETX(0);
+var33 = PZL_CHAR_GETY(0);
+var34 = PZL_CHAR_GETZ(0);
+PZL_LETTERBOX_DISP(0);
+PZL_CAMERA_LOCK();
+PZL_CAMERA_ROTATE(180.00f);
+PZL_CAMERA_TRANSLATE(var32, var33, var34);
+PZL_VOICE(40001);
+PZL_CAMERA_ANIM(108, 0, 1.00f, 0.00f);
+PZL_CUBE_DISP2(1);
+PZL_SHEEP_DISP(1);
+PZL_MODEL_TRANSLATE(0, var32, var33, var34);
+PZL_MODEL_ROTATE(0, 0.00f);
+PZL_BLUR_ANIM(0.00f, 0.00f, 4.00f, 0.00f);
+PZL_SE(450);
+
+if (RND(1) == 0)
+{
+PZL_CAMERA_READ(1, 608);
+}
+else
+{
+PZL_CAMERA_READ(1, 612);
+}
+
+PZL_CAMERA_SYNC(1);
+PZL_BLUR_ANIM(0.00f, 0.00f, 0.00f, 0.50f);
+PZL_MODEL_ANIM(0, 167, 1.00f, 0.00f);
+PZL_MODEL_GROUP_NEXT_ANIM(0, 0, 168, 1.00f, 0.00f);
+WAIT(3);
+PZL_GRAB_DISP(0, 1);
+WAIT(3);
+PADOK(0);
+PZL_GRAB_DISP(0, 0);
+PZL_VOICE(20014);
+PZL_CAMERA_ANIM(1, 0, 1.00f, 0.00f);
+PZL_MODEL_ANIM(0, 84, 1.00f, 0.20f);
+WAIT(6);
+PZL_MODEL_ANIM(3, 2, 1.00f, 0.00f);
+PZL_MODEL_GROUP_NEXT_ANIM(3, 0, 3, 1.00f, 0.00f);
+DUALSHOCK(0, 0.20f, 1.00f, 1.00f);
+WAIT(14);
+PZL_SE(229);
+WAIT(15);
+PZL_AGOAL_BLOCK();
+WAIT(20);
+PZL_MODEL_GROUP_ANIM(0, 1, 158, 1.00f, 0.00f);
+WAIT(15);
+PZL_MODEL_GROUP_ANIM(0, 1, 107, 1.00f, 0.10f);
+PZL_MODEL_GROUP_ANIM(0, 3, 121, 1.00f, 0.00f);
+WAIT(29);
+PZL_AGOAL_CLIMB();
+WAIT(8);
+PZL_SE(458);
+WAIT(5);
+PZL_RESULT();
+WAIT(7);
+PZL_AMBIENT_ANIM(1, 0.20f, -1.00f, -1.00f, -1.00f, 0.40f);
+PZL_FILTER_ANIM(0, 4.00f);
+WAIT(23);
+PZL_SE(459);
+WAIT(20);
+PZL_FADE_OUT(5, 1.00f);
+WAIT(45);
+PZL_SE(466);
+WAIT(43);
+PZL_SE(458);
+WAIT(80);
+PZL_BG_FADEOUT(1);
+WAIT(35);
+PZL_RESULT_SYNC();
+PZL_AGOAL_SYNC();
+FADE_OUT(1, 3);
+FADE_COLOR(0, 0, 0);
+FADE_SYNC();
+PZL_CAMERA_UNLOCK();
+PZL_CAMERA_FREE(0);
+PZL_CAMERA_FREE(1);
+return;
+}
+
+
+// Procedure Index: 29
+void pzl_goal_goal_bs1()
+{
+int var35;
+int var36;
+int var37;
+PZL_MODEL_DISP(2, 0);
+PZL_VOICE_STOP();
+STOP_QUAKE();
+var35 = PZL_CHAR_GETX(0);
+var36 = PZL_CHAR_GETY(0);
+var37 = PZL_CHAR_GETZ(0);
+PZL_BGM(24);
+PZL_CAMERA_LOCK();
+PZL_CAMERA_TRANSLATE(var35, var36, var37);
+PZL_VOICE(20010);
+PZL_CAMERA_ANIM(104, 0, 1.00f, 0.00f);
+PZL_CUBE_DISP2(1);
+PZL_SHEEP_DISP(1);
+PZL_MODEL_ROTATE(0, 0.00f);
+PZL_MODEL_ANIM(0, 151, 1.00f, 0.00f);
+WAIT(1);
+PZL_BLUR_ANIM(0.00f, 0.00f, 2.00f, 0.00f);
+WAIT(10);
+PZL_MODEL_GROUP_ANIM(0, 1, 150, 1.00f, 0.10f);
+PZL_VOICE(20008);
+PZL_BLUR_ANIM(0.00f, 0.00f, 0.00f, 0.40f);
+WAIT(25);
+PZL_CAMERA_ANIM(105, 0, 1.00f, 0.00f);
+PZL_CAMERA_ROTATE(0.00f);
+PZL_BLUR_ANIM(1.00f, 0.00f, 2.00f, 0.00f);
+WAIT(1);
+PZL_BLUR_ANIM(-1.00f, 0.00f, 0.10f, 2.00f);
+PZL_DOF_ANIM2(1.00f, 1.00f, 0.96f, 1.00f, 0.80f, 0.20f, 0.20f);
+WAIT(5);
+PZL_DOF_ANIM2(1.00f, 1.00f, 0.00f, 0.00f, 1.00f, 1.00f, 0.10f);
+WAIT(5);
+PZL_MODEL_GROUP_ANIM(0, 1, 119, 1.00f, 0.60f);
+WAIT(20);
+PZL_VOICE(20016);
+PZL_MODEL_GROUP_ANIM(0, 1, 150, 1.00f, 0.10f);
+WAIT(10);
+PZL_CAMERA_ANIM(106, 0, 1.00f, 0.00f);
+PZL_BLUR_ANIM(1.00f, 0.00f, 2.00f, 0.00f);
+WAIT(1);
+PZL_BLUR_ANIM(-1.00f, 0.00f, 0.10f, 5.00f);
+WAIT(49);
+FADE_OUT(1, 24);
+FADE_SYNC();
+PZL_BLUR_ACTIVE(0);
+PZL_CAMERA_READ(0, 611);
+PZL_CAMERA_SYNC(0);
+PZL_MODEL_GROUP_ANIM(0, 3, 121, 1.00f, 0.00f);
+PZL_MODEL_ROTATE(0, 0.00f);
+PZL_MODEL_ANIM(0, 152, 1.00f, 0.00f);
+PZL_CAMERA_ROTATE(180.00f);
+PZL_CAMERA_ANIM(0, 0, 1.00f, 0.00f);
+WAIT(1);
+FADE_IN(0);
+PZL_MODEL_ANIM(0, 156, 1.00f, 0.20f);
+WAIT(31);
+PZL_SE(453);
+PZL_ENV_STOP();
+WAIT(14);
+FADE_OUT(1, 15);
+FADE_SYNC();
+PZL_CAMERA_FREE(0);
+return;
+}
+
+
+// Procedure Index: 30
+void colo_goal1()
+{
+int var39;
+int var38;
+int var40;
+int var41;
+int var42;
+int var43;
+int var44;
+int var45;
+int var46;
+PZL_VOICE_STOP();
+STOP_QUAKE();
+PZL_LETTERBOX_DISP(0);
+var39 = PZL_FINISH_PLAYER();
+
+if (var39 == 0)
+{
+var38 = 1;
+}
+else
+{
+var38 = 0;
+}
+
+var40 = PZL_CHAR_GETX(var38);
+var41 = PZL_CHAR_GETY(var38);
+var42 = PZL_CHAR_GETZ(var38);
+var43 = PZL_CHAR_GETX(var39);
+var44 = PZL_CHAR_GETY(var39);
+var45 = PZL_CHAR_GETZ(var39);
+PZL_CAMERA_LOCK();
+PZL_CAMERA_ROTATE(170.00f);
+PZL_CAMERA_TRANSLATE((var40 - 1), (var41 + 1), (var42 - 4));
+PZL_CAMERA_ANIM(108, 0, 1.00f, 0.00f);
+PZL_MODEL_TRANSLATE(var38, var40, var41, var42);
+PZL_MODEL_ROTATE(var38, 180.00f);
+PZL_MODEL_ANIM(var38, 0, 1.00f, 0.20f);
+var46 = PZL_MODEL_ANIM_PERMISSION(var39);
+
+if (var46 == 1)
+{
+PZL_MODEL_TRANSLATE(var39, var43, var44, var45);
+PZL_MODEL_ROTATE(var39, 180.00f);
+PZL_MODEL_ANIM(var39, 0, 1.00f, 0.20f);
+}
+
+PZL_MODEL_ANIM(var38, 84, 1.00f, 0.10f);
+PZL_MODEL_GROUP_NEXT_ANIM(var38, 0, 0, 1.00f, 0.50f);
+
+if (var38 == 0)
+{
+PZL_VOICE(20114);
+}
+else
+{
+PZL_VOICE(20115);
+}
+
+PZL_ENV_STOP();
+WAIT(20);
+return;
+}
+
+
+// Procedure Index: 31
+void colo_goal2()
+{
+int var48;
+int var47;
+int var49;
+int var50;
+int var51;
+int var52;
+int var53;
+int var54;
+int var55;
+int var56;
+PZL_VOICE_STOP();
+STOP_QUAKE();
+PZL_LETTERBOX_DISP(0);
+var48 = PZL_FINISH_PLAYER();
+
+if (var48 == 0)
+{
+var47 = 1;
+}
+else
+{
+var47 = 0;
+}
+
+var49 = PZL_CHAR_GETX(var47);
+var50 = PZL_CHAR_GETY(var47);
+var51 = PZL_CHAR_GETZ(var47);
+var52 = PZL_CHAR_GETX(var48);
+var53 = PZL_CHAR_GETY(var48);
+var54 = PZL_CHAR_GETZ(var48);
+PZL_CAMERA_LOCK();
+PZL_CAMERA_ROTATE(150.00f);
+PZL_CAMERA_TRANSLATE(var49, (var50 + 1), (var51 - 3));
+PZL_CAMERA_ANIM(108, 0, 1.00f, 0.00f);
+PZL_MODEL_TRANSLATE(var47, var49, var50, var51);
+PZL_MODEL_ROTATE(var47, 180.00f);
+PZL_MODEL_ANIM(var47, 0, 1.00f, 0.20f);
+var55 = PZL_MODEL_ANIM_PERMISSION(var48);
+
+if (var55 == 1)
+{
+PZL_MODEL_TRANSLATE(var48, var52, var53, var54);
+PZL_MODEL_ROTATE(var48, 180.00f);
+PZL_MODEL_ANIM(var48, 0, 1.00f, 0.20f);
+}
+
+PZL_MODEL_TRANSLATE(7, var49, var50, var51);
+PZL_MODEL_DISP(7, 1);
+PZL_MODEL_ANIM(7, 0, 1.00f, 0.00f);
+var56 = RND(2);
+
+if (var56 == 0)
+{
+PZL_MODEL_ANIM(var47, 57, 1.00f, 0.10f);
+}
+else if (var56 == 1)
+{
+PZL_MODEL_ANIM(var47, 60, 1.00f, 0.10f);
+}
+else
+{
+PZL_MODEL_ANIM(var47, 85, 1.00f, 0.10f);
+PZL_MODEL_GROUP_NEXT_ANIM(var47, 0, 0, 1.00f, 0.50f);
+}
+
+
+if (var47 == 0)
+{
+PZL_VOICE(20109);
+}
+else
+{
+PZL_VOICE(20112);
+}
+
+PZL_SE(465);
+PZL_ENV_STOP();
+WAIT(20);
+
+if (var55 == 1)
+{
+
+if (RND(1) == 0)
+{
+PZL_MODEL_ANIM(var48, 0x40, 1.00f, 0.10f);
+}
+else
+{
+PZL_MODEL_ANIM(var48, 65, 1.00f, 0.10f);
+}
+
+}
+
+WAIT(5);
+
+if (var55 == 1)
+{
+
+if (var47 == 0)
+{
+PZL_VOICE(20113);
+}
+else
+{
+PZL_VOICE(20110);
+}
+
+}
+
+WAIT(25);
+return;
+}
+
+
+// Procedure Index: 32
+void colo_goal3()
+{
+int var58;
+int var57;
+int var59;
+int var60;
+int var61;
+int var63;
+int var62;
+PZL_VOICE_STOP();
+STOP_QUAKE();
+PZL_LETTERBOX_DISP(0);
+var58 = PZL_FINISH_PLAYER();
+
+if (var58 == 0)
+{
+var57 = 1;
+}
+else
+{
+var57 = 0;
+}
+
+var59 = PZL_CHAR_GETX(var57);
+var60 = PZL_CHAR_GETY(var57);
+var61 = PZL_CHAR_GETZ(var57);
+PZL_CAMERA_LOCK();
+
+if (var63 == 1)
+{
+PZL_COMPE_CUBEDEL(var57);
+}
+
+var62 = PZL_GET_DROPDEATH();
+
+if (var62 == 0)
+{
+PZL_CAMERA_ANIM(101, 0, 1.00f, 0.00f);
+PZL_CAMERA_TRANSLATE(7, var60, (var61 - 8));
+PZL_CAMERA_ROTATE(180.00f);
+PZL_MODEL_TRANSLATE(0, 7, (var60 - 1), (var61 - 8));
+PZL_MODEL_ROTATE(0, 180.00f);
+PZL_MODEL_ANIM_RESET(0);
+PZL_MODEL_ANIM(0, 62, 1.00f, 0.00f);
+PZL_VOICE(40115);
+PZL_BLUR_ANIM(0.00f, 0.00f, 10.00f, 0.00f);
+PZL_BLUR_ACTIVE(1);
+WAIT(50);
+PZL_BLUR_ACTIVE(0);
+}
+else if (var62 == 1)
+{
+PZL_CAMERA_ANIM(101, 0, 1.00f, 0.00f);
+PZL_CAMERA_TRANSLATE(7, var60, (var61 - 8));
+PZL_CAMERA_ROTATE(180.00f);
+PZL_MODEL_TRANSLATE(1, 7, (var60 - 1), (var61 - 8));
+PZL_MODEL_ROTATE(1, 180.00f);
+PZL_MODEL_ANIM_RESET(0);
+PZL_MODEL_ANIM(1, 62, 1.00f, 0.00f);
+PZL_VOICE(40116);
+PZL_BLUR_ANIM(0.00f, 0.00f, 10.00f, 0.00f);
+PZL_BLUR_ACTIVE(1);
+WAIT(50);
+PZL_BLUR_ACTIVE(0);
+}
+
+var63 = PZL_MODEL_ANIM_PERMISSION(var57);
+
+if (var63 == 1)
+{
+PZL_COMPE_CUBEDEL(var57);
+PZL_MODEL_TRANSLATE(var57, var59, var60, var61);
+PZL_MODEL_ROTATE(var57, 180.00f);
+PZL_MODEL_ANIM(var57, 84, 1.00f, 0.10f);
+PZL_MODEL_GROUP_NEXT_ANIM(var57, 0, 0, 1.00f, 0.50f);
+}
+
+PZL_CAMERA_ROTATE(170.00f);
+PZL_CAMERA_TRANSLATE((var59 - 1), (var60 + 1), (var61 - 4));
+PZL_CAMERA_ANIM(108, 0, 1.00f, 0.00f);
+
+if (var57 == 0)
+{
+PZL_VOICE(20114);
+}
+else
+{
+PZL_VOICE(20115);
+}
+
+PZL_ENV_STOP();
+WAIT(20);
+return;
+}
+
+
+// Procedure Index: 33
+void colo_goal4()
+{
+int var65;
+int var64;
+int var66;
+int var67;
+int var68;
+int var70;
+int var69;
+int var71;
+PZL_VOICE_STOP();
+STOP_QUAKE();
+PZL_LETTERBOX_DISP(0);
+var65 = PZL_FINISH_PLAYER();
+
+if (var65 == 0)
+{
+var64 = 1;
+}
+else
+{
+var64 = 0;
+}
+
+var66 = PZL_CHAR_GETX(var64);
+var67 = PZL_CHAR_GETY(var64);
+var68 = PZL_CHAR_GETZ(var64);
+PZL_CAMERA_LOCK();
+
+if (var70 == 1)
+{
+PZL_COMPE_CUBEDEL(var64);
+}
+
+var69 = PZL_GET_DROPDEATH();
+
+if (var69 == 0)
+{
+PZL_CAMERA_ANIM(101, 0, 1.00f, 0.00f);
+PZL_CAMERA_TRANSLATE(7, var67, (var68 - 8));
+PZL_CAMERA_ROTATE(180.00f);
+PZL_MODEL_TRANSLATE(0, 7, (var67 - 1), (var68 - 8));
+PZL_MODEL_ROTATE(0, 180.00f);
+PZL_MODEL_ANIM_RESET(0);
+PZL_MODEL_ANIM(0, 62, 1.00f, 0.00f);
+PZL_VOICE(40115);
+PZL_BLUR_ANIM(0.00f, 0.00f, 10.00f, 0.00f);
+PZL_BLUR_ACTIVE(1);
+WAIT(50);
+PZL_BLUR_ACTIVE(0);
+}
+else if (var69 == 1)
+{
+PZL_CAMERA_ANIM(101, 0, 1.00f, 0.00f);
+PZL_CAMERA_TRANSLATE(7, var67, (var68 - 8));
+PZL_CAMERA_ROTATE(180.00f);
+PZL_MODEL_TRANSLATE(1, 7, (var67 - 1), (var68 - 8));
+PZL_MODEL_ROTATE(1, 180.00f);
+PZL_MODEL_ANIM_RESET(0);
+PZL_MODEL_ANIM(1, 62, 1.00f, 0.00f);
+PZL_VOICE(40116);
+PZL_BLUR_ANIM(0.00f, 0.00f, 10.00f, 0.00f);
+PZL_BLUR_ACTIVE(1);
+WAIT(50);
+PZL_BLUR_ACTIVE(0);
+}
+
+PZL_CAMERA_ROTATE(150.00f);
+PZL_CAMERA_TRANSLATE(var66, (var67 + 1), (var68 - 3));
+PZL_CAMERA_ANIM(108, 0, 1.00f, 0.00f);
+var70 = PZL_MODEL_ANIM_PERMISSION(var64);
+var71 = RND(3);
+
+if (var70 == 1)
+{
+PZL_COMPE_CUBEDEL(var64);
+PZL_MODEL_TRANSLATE(var64, var66, var67, var68);
+PZL_MODEL_ROTATE(var64, 180.00f);
+
+if (var71 == 0)
+{
+PZL_MODEL_ANIM(var64, 57, 1.00f, 0.10f);
+}
+else if (var71 == 1)
+{
+PZL_MODEL_ANIM(var64, 60, 1.00f, 0.10f);
+}
+else
+{
+PZL_MODEL_ANIM(var64, 85, 1.00f, 0.10f);
+PZL_MODEL_GROUP_NEXT_ANIM(var64, 0, 0, 1.00f, 0.50f);
+}
+
+}
+
+PZL_MODEL_TRANSLATE(7, var66, var67, var68);
+PZL_MODEL_DISP(7, 1);
+PZL_MODEL_ANIM(7, 0, 1.00f, 0.00f);
+
+if (var64 == 0)
+{
+PZL_VOICE(20109);
+}
+else
+{
+PZL_VOICE(20112);
+}
+
+PZL_SE(465);
+PZL_ENV_STOP();
+WAIT(50);
+return;
+}
+

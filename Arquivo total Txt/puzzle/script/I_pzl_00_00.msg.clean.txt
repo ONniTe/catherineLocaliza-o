@@ -1,0 +1,57 @@
+
+//
+// FlowScript decompiled using Atlus Script Tools
+//
+
+
+//
+// Imports
+//
+
+import("I_pzl_00_00.bf.msg");
+
+//
+// Procedure declarations
+//
+
+// Procedure Index: 0
+void pzl_00_00_start()
+{
+return;
+}
+
+
+// Procedure Index: 1
+void pzl_00_00_end()
+{
+return;
+}
+
+
+// Procedure Index: 2
+void pzl_00_00_dead()
+{
+return;
+}
+
+
+// Procedure Index: 3
+void pzl_00_00_dead_2()
+{
+return;
+}
+
+
+// Procedure Index: 4
+void pzl_00_00_dead_3()
+{
+return;
+}
+
+
+// Procedure Index: 5
+void pzl_00_00_0000()
+{
+return;
+}
+
